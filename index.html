@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LESKORT</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    button {
+      padding: 15px 25px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #ff4081;
+      color: white;
+    }
+
+    #heart-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+    }
+
+    .heart {
+      width: 200px;
+      height: 200px;
+      position: relative;
+      background-color: red;
+      transform: rotate(-45deg);
+      margin: 0 auto;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .heart::before {
+      top: -100px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 100px;
+      top: 0;
+    }
+
+    @media (max-width: 768px) {
+      .heart {
+        width: 150px;
+        height: 150px;
+      }
+
+      .heart::before,
+      .heart::after {
+        width: 150px;
+        height: 150px;
+      }
+
+      .heart::before {
+        top: -75px;
+      }
+
+      .heart::after {
+        left: 75px;
+      }
+
+      button {
+        font-size: 16px;
+        padding: 10px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="show-heart">ТЫК</button>
+  <div id="heart-container"></div>
+
+  <script>
+    document.getElementById("show-heart").addEventListener("click", () => {
+      const heartContainer = document.getElementById("heart-container");
+      heartContainer.innerHTML = '<div class="heart"></div>';
+      heartContainer.style.display = "block";
+    });
+  </script>
+</body>
+</html>
